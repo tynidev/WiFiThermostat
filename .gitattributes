@@ -1,9 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-# C files
-*.c filter=indent
-
 # Custom for Visual Studio
 *.cs     diff=csharp
 *.sln    merge=union
