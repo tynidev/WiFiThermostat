@@ -13801,6 +13801,30 @@ naming: grid - package width</description>
 <text x="-6.35" y="7.62" size="1.27" layer="25">&gt;NAME</text>
 <text x="-6.35" y="-8.89" size="1.27" layer="27">&gt;VALUE</text>
 </package>
+<package name="OSTTC020162">
+<wire x1="5.5" y1="4.2" x2="-5.5" y2="4.2" width="0.127" layer="21"/>
+<wire x1="-5.5" y1="-3.3" x2="5.5" y2="-3.3" width="0.127" layer="21"/>
+<wire x1="-5.5" y1="-3.3" x2="-5.5" y2="4.2" width="0.127" layer="21"/>
+<wire x1="5.5" y1="-3.3" x2="5.5" y2="4.2" width="0.127" layer="21"/>
+<pad name="2" x="2.5" y="0" drill="1.3" diameter="2.54" shape="square"/>
+<pad name="1" x="-2.5" y="0" drill="1.3" diameter="2.54" shape="square"/>
+<text x="-3" y="1.75" size="1.27" layer="21">1</text>
+<text x="2" y="1.75" size="1.27" layer="21">2</text>
+<text x="-4" y="-2.75" size="1.016" layer="21">5MM 2TERM</text>
+</package>
+<package name="OSTTC030162">
+<wire x1="8" y1="4.2" x2="-8" y2="4.2" width="0.127" layer="21"/>
+<wire x1="-8" y1="-3.3" x2="8" y2="-3.3" width="0.127" layer="21"/>
+<wire x1="-8" y1="-3.3" x2="-8" y2="4.2" width="0.127" layer="21"/>
+<wire x1="8" y1="-3.3" x2="8" y2="4.2" width="0.127" layer="21"/>
+<text x="-6.25" y="-2.75" size="1.016" layer="21">5MM 3TERM</text>
+<pad name="2" x="0" y="0" drill="1.3" diameter="2.54" shape="square"/>
+<pad name="1" x="-5" y="0" drill="1.3" diameter="2.54" shape="square"/>
+<pad name="3" x="5" y="0" drill="1.3" diameter="2.54" shape="square"/>
+<text x="-5.5" y="1.75" size="1.27" layer="21">1</text>
+<text x="-0.5" y="1.75" size="1.27" layer="21">2</text>
+<text x="4.5" y="1.75" size="1.27" layer="21">3</text>
+</package>
 </packages>
 <symbols>
 <symbol name="L-EURO">
@@ -13809,6 +13833,23 @@ naming: grid - package width</description>
 <rectangle x1="-3.556" y1="-1.016" x2="3.556" y2="1.016" layer="94"/>
 <pin name="2" x="5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="1" x="-5.08" y="0" visible="off" length="short" direction="pas" swaplevel="1"/>
+</symbol>
+<symbol name="OSTTC020162">
+<pin name="2" x="10.16" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="1" x="10.16" y="5.08" visible="pin" length="middle" rot="R180"/>
+<wire x1="5.08" y1="0" x2="5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="7.62" x2="0" y2="7.62" width="0.254" layer="94"/>
+<wire x1="0" y1="7.62" x2="0" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="5.08" y2="0" width="0.254" layer="94"/>
+</symbol>
+<symbol name="OSTTC030162">
+<pin name="3" x="5.08" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="2" x="5.08" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="1" x="5.08" y="7.62" visible="pin" length="middle" rot="R180"/>
+<wire x1="0" y1="0" x2="0" y2="10.16" width="0.254" layer="94"/>
+<wire x1="0" y1="10.16" x2="-5.08" y2="10.16" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="10.16" x2="-5.08" y2="0" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="0" x2="0" y2="0" width="0.254" layer="94"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -13834,87 +13875,15 @@ naming: grid - package width</description>
 </device>
 </devices>
 </deviceset>
-</devicesets>
-</library>
-<library name="SparkFun-Connectors">
-<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
-In this library you'll find connectors and sockets- basically anything that can be plugged into or onto.&lt;br&gt;&lt;br&gt;
-We've spent an enormous amount of time creating and checking these footprints and parts, but it is the end user's responsibility to ensure correctness and suitablity for a given componet or application. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
-&lt;br&gt;&lt;br&gt;
-&lt;b&gt;Licensing:&lt;/b&gt; CC v3.0 Share-Alike You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
-<packages>
-<package name="SCREWTERMINAL-5MM-3">
-<wire x1="-3.1" y1="4.2" x2="13.1" y2="4.2" width="0.2032" layer="21"/>
-<wire x1="13.1" y1="4.2" x2="13.1" y2="-2.3" width="0.2032" layer="21"/>
-<wire x1="13.1" y1="-2.3" x2="13.1" y2="-3.3" width="0.2032" layer="21"/>
-<wire x1="13.1" y1="-3.3" x2="-3.1" y2="-3.3" width="0.2032" layer="21"/>
-<wire x1="-3.1" y1="-3.3" x2="-3.1" y2="-2.3" width="0.2032" layer="21"/>
-<wire x1="-3.1" y1="-2.3" x2="-3.1" y2="4.2" width="0.2032" layer="21"/>
-<wire x1="13.1" y1="-2.3" x2="-3.1" y2="-2.3" width="0.2032" layer="21"/>
-<wire x1="-3.1" y1="-1.35" x2="-3.7" y2="-1.35" width="0.2032" layer="51"/>
-<wire x1="-3.7" y1="-1.35" x2="-3.7" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="-3.7" y1="-2.35" x2="-3.1" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="13.1" y1="4" x2="13.7" y2="4" width="0.2032" layer="51"/>
-<wire x1="13.7" y1="4" x2="13.7" y2="3" width="0.2032" layer="51"/>
-<wire x1="13.7" y1="3" x2="13.1" y2="3" width="0.2032" layer="51"/>
-<circle x="2.5" y="3.7" radius="0.2828" width="0.127" layer="51"/>
-<pad name="1" x="0" y="0" drill="1.3" diameter="2.413" shape="square"/>
-<pad name="2" x="5" y="0" drill="1.3" diameter="2.413"/>
-<pad name="3" x="10" y="0" drill="1.3" diameter="2.413"/>
-<text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
-<text x="-1.27" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
-</package>
-<package name="SCREWTERMINAL-5MM-2">
-<wire x1="-3.1" y1="4.2" x2="8.1" y2="4.2" width="0.2032" layer="21"/>
-<wire x1="8.1" y1="4.2" x2="8.1" y2="-2.3" width="0.2032" layer="21"/>
-<wire x1="8.1" y1="-2.3" x2="8.1" y2="-3.3" width="0.2032" layer="21"/>
-<wire x1="8.1" y1="-3.3" x2="-3.1" y2="-3.3" width="0.2032" layer="21"/>
-<wire x1="-3.1" y1="-3.3" x2="-3.1" y2="-2.3" width="0.2032" layer="21"/>
-<wire x1="-3.1" y1="-2.3" x2="-3.1" y2="4.2" width="0.2032" layer="21"/>
-<wire x1="8.1" y1="-2.3" x2="-3.1" y2="-2.3" width="0.2032" layer="21"/>
-<wire x1="-3.1" y1="-1.35" x2="-3.7" y2="-1.35" width="0.2032" layer="51"/>
-<wire x1="-3.7" y1="-1.35" x2="-3.7" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="-3.7" y1="-2.35" x2="-3.1" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="8.1" y1="4" x2="8.7" y2="4" width="0.2032" layer="51"/>
-<wire x1="8.7" y1="4" x2="8.7" y2="3" width="0.2032" layer="51"/>
-<wire x1="8.7" y1="3" x2="8.1" y2="3" width="0.2032" layer="51"/>
-<circle x="2.5" y="3.7" radius="0.2828" width="0.127" layer="51"/>
-<pad name="1" x="0" y="0" drill="1.3" diameter="2.032" shape="square"/>
-<pad name="2" x="5" y="0" drill="1.3" diameter="2.032"/>
-<text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
-<text x="-1.27" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
-</package>
-</packages>
-<symbols>
-<symbol name="SCREWTERMINAL-3">
-<wire x1="0" y1="7.62" x2="0" y2="0" width="0.254" layer="94"/>
-<wire x1="0" y1="0" x2="10.16" y2="0" width="0.254" layer="94"/>
-<wire x1="10.16" y1="0" x2="10.16" y2="7.62" width="0.254" layer="94"/>
-<wire x1="10.16" y1="7.62" x2="0" y2="7.62" width="0.254" layer="94"/>
-<pin name="1" x="2.54" y="-5.08" visible="pin" length="middle" rot="R90"/>
-<pin name="2" x="5.08" y="-5.08" visible="pin" length="middle" rot="R90"/>
-<pin name="3" x="7.62" y="-5.08" visible="pin" length="middle" rot="R90"/>
-</symbol>
-<symbol name="SCREWTERMINAL-2">
-<wire x1="0" y1="0" x2="0" y2="5.08" width="0.254" layer="94"/>
-<wire x1="0" y1="5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
-<wire x1="7.62" y1="5.08" x2="7.62" y2="0" width="0.254" layer="94"/>
-<wire x1="7.62" y1="0" x2="0" y2="0" width="0.254" layer="94"/>
-<pin name="1" x="2.54" y="-5.08" visible="pin" length="middle" rot="R90"/>
-<pin name="2" x="5.08" y="-5.08" visible="pin" length="middle" rot="R90"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="SCREWTERMINAL-3">
+<deviceset name="OSTTC020162">
 <gates>
-<gate name="G$1" symbol="SCREWTERMINAL-3" x="0" y="0"/>
+<gate name="G$1" symbol="OSTTC020162" x="0" y="0"/>
 </gates>
 <devices>
-<device name="" package="SCREWTERMINAL-5MM-3">
+<device name="" package="OSTTC020162">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
-<connect gate="G$1" pin="3" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -13922,15 +13891,16 @@ We've spent an enormous amount of time creating and checking these footprints an
 </device>
 </devices>
 </deviceset>
-<deviceset name="SCREWTERMINAL-2">
+<deviceset name="OSTTC030162">
 <gates>
-<gate name="G$1" symbol="SCREWTERMINAL-2" x="0" y="0"/>
+<gate name="G$1" symbol="OSTTC030162" x="5.08" y="0"/>
 </gates>
 <devices>
-<device name="" package="SCREWTERMINAL-5MM-2">
+<device name="" package="OSTTC030162">
 <connects>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -13958,17 +13928,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <part name="LT1086-3.3" library="linear" deviceset="*317" device="T"/>
 <part name="C3" library="capacitor-wima" deviceset="C" device="5/2.5" value="10uF"/>
 <part name="L1" library="TylersLib" deviceset="DO3316P" device="" value="330uH"/>
-<part name="U$1" library="SparkFun-Connectors" deviceset="SCREWTERMINAL-3" device=""/>
-<part name="U$2" library="SparkFun-Connectors" deviceset="SCREWTERMINAL-2" device=""/>
+<part name="U$2" library="TylersLib" deviceset="OSTTC020162" device=""/>
+<part name="U$3" library="TylersLib" deviceset="OSTTC030162" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="38.481" y="18.923" size="1.778" layer="95">VREG-5</text>
-<text x="2.159" y="14.351" size="1.778" layer="91">VAC+</text>
-<text x="2.54" y="4.445" size="1.778" layer="91">VAC-</text>
-<text x="71.12" y="20.32" size="1.778" layer="91">5V+</text>
-<text x="113.03" y="14.732" size="1.778" layer="91">3.3V+</text>
 <text x="52.07" y="1.27" size="1.778" layer="95">1N5819HW</text>
 </plain>
 <instances>
@@ -13976,12 +13942,15 @@ We've spent an enormous amount of time creating and checking these footprints an
 <instance part="D8" gate="G$1" x="66.04" y="2.54" smashed="yes" rot="R90"/>
 <instance part="B1" gate="G$1" x="17.78" y="10.16" smashed="yes"/>
 <instance part="C1" gate="G$1" x="30.48" y="5.08"/>
-<instance part="C2" gate="G$1" x="76.2" y="2.54" rot="R90"/>
+<instance part="C2" gate="G$1" x="76.2" y="2.54" smashed="yes" rot="R90">
+<attribute name="NAME" x="83.185" y="6.985" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="86.36" y="3.81" size="1.778" layer="96" rot="R180"/>
+</instance>
 <instance part="LT1086-3.3" gate="A1" x="91.44" y="12.7" smashed="yes"/>
 <instance part="C3" gate="G$1" x="104.14" y="10.16"/>
 <instance part="L1" gate="G$1" x="71.12" y="7.62"/>
-<instance part="U$1" gate="G$1" x="96.52" y="22.86" rot="R90"/>
-<instance part="U$2" gate="G$1" x="12.7" y="27.94" rot="R270"/>
+<instance part="U$2" gate="G$1" x="22.86" y="27.94" rot="R180"/>
+<instance part="U$3" gate="G$1" x="96.52" y="22.86"/>
 </instances>
 <busses>
 </busses>
@@ -14013,10 +13982,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 <junction x="12.7" y="10.16"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="1"/>
 <wire x1="101.6" y1="25.4" x2="104.14" y2="25.4" width="0.1524" layer="91"/>
 <junction x="104.14" y="25.4"/>
 <label x="99.06" y="25.4" size="1.778" layer="95"/>
+<pinref part="U$3" gate="G$1" pin="3"/>
 </segment>
 </net>
 <net name="VUNREG" class="0">
@@ -14038,12 +14007,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <junction x="10.16" y="5.08"/>
 <pinref part="B1" gate="G$1" pin="AC2"/>
 <junction x="17.78" y="5.08"/>
+<label x="10.16" y="7.62" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="2"/>
-<wire x1="7.62" y1="22.86" x2="5.08" y2="22.86" width="0.1524" layer="91"/>
-<junction x="5.08" y="22.86"/>
-<label x="5.08" y="22.86" size="1.778" layer="95"/>
+<wire x1="12.7" y1="25.4" x2="10.16" y2="25.4" width="0.1524" layer="91"/>
+<junction x="10.16" y="25.4"/>
+<label x="10.16" y="25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VAC+" class="0">
@@ -14052,12 +14022,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <junction x="10.16" y="15.24"/>
 <pinref part="B1" gate="G$1" pin="AC1"/>
 <junction x="17.78" y="15.24"/>
+<label x="10.16" y="17.78" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
 <pinref part="U$2" gate="G$1" pin="1"/>
-<wire x1="7.62" y1="25.4" x2="5.08" y2="25.4" width="0.1524" layer="91"/>
-<junction x="5.08" y="25.4"/>
-<label x="5.08" y="25.4" size="1.778" layer="95"/>
+<wire x1="12.7" y1="22.86" x2="10.16" y2="22.86" width="0.1524" layer="91"/>
+<junction x="10.16" y="22.86"/>
+<label x="10.16" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -14072,10 +14043,10 @@ We've spent an enormous amount of time creating and checking these footprints an
 </net>
 <net name="FIVE+" class="0">
 <segment>
-<pinref part="U$1" gate="G$1" pin="3"/>
 <wire x1="101.6" y1="30.48" x2="104.14" y2="30.48" width="0.1524" layer="91"/>
 <junction x="104.14" y="30.48"/>
 <label x="99.06" y="30.48" size="1.778" layer="95"/>
+<pinref part="U$3" gate="G$1" pin="1"/>
 </segment>
 <segment>
 <pinref part="VREG-5" gate="G$1" pin="FEED"/>
@@ -14089,6 +14060,7 @@ We've spent an enormous amount of time creating and checking these footprints an
 <pinref part="LT1086-3.3" gate="A1" pin="VI"/>
 <pinref part="L1" gate="G$1" pin="2"/>
 <junction x="76.2" y="7.62"/>
+<label x="76.2" y="20.32" size="1.778" layer="95" rot="R180"/>
 </segment>
 </net>
 <net name="THREE+" class="0">
@@ -14099,12 +14071,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="104.14" y1="15.24" x2="111.76" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="104.14" y1="12.7" x2="104.14" y2="15.24" width="0.1524" layer="91"/>
+<label x="111.76" y="17.78" size="1.778" layer="95" rot="R180"/>
 </segment>
 <segment>
-<pinref part="U$1" gate="G$1" pin="2"/>
 <wire x1="101.6" y1="27.94" x2="104.14" y2="27.94" width="0.1524" layer="91"/>
 <junction x="104.14" y="27.94"/>
 <label x="99.06" y="27.94" size="1.778" layer="95"/>
+<pinref part="U$3" gate="G$1" pin="2"/>
 </segment>
 </net>
 </nets>
