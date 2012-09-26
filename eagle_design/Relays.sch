@@ -2130,6 +2130,7 @@ W = angled&lt;p&gt;
 <wire x1="22.86" y1="22.86" x2="30.48" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="30.48" y1="22.86" x2="30.48" y2="25.4" width="0.1524" layer="91"/>
 <junction x="30.48" y="25.4"/>
+<junction x="30.48" y="22.86"/>
 </segment>
 <segment>
 <pinref part="D3" gate="G$1" pin="C"/>
@@ -2138,6 +2139,7 @@ W = angled&lt;p&gt;
 <wire x1="2.54" y1="22.86" x2="10.16" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="10.16" y1="22.86" x2="10.16" y2="25.4" width="0.1524" layer="91"/>
 <junction x="10.16" y="25.4"/>
+<junction x="10.16" y="22.86"/>
 </segment>
 <segment>
 <pinref part="K3" gate="1" pin="1"/>
@@ -2146,6 +2148,7 @@ W = angled&lt;p&gt;
 <wire x1="43.18" y1="22.86" x2="43.18" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="50.8" y1="22.86" x2="50.8" y2="25.4" width="0.1524" layer="91"/>
 <junction x="50.8" y="25.4"/>
+<junction x="50.8" y="22.86"/>
 </segment>
 <segment>
 <wire x1="12.7" y1="40.64" x2="15.24" y2="40.64" width="0.1524" layer="91"/>
