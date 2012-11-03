@@ -32,8 +32,8 @@ for board in $@; do
     eagle -X -dGERBER_RS274X -o"${outputdir}/Bottom Layer.sol" ${board} Bottom Pads Vias
     eagle -X -dGERBER_RS274X -o"${outputdir}/Top Solder Mask.stc" ${board} tStop
     eagle -X -dGERBER_RS274X -o"${outputdir}/Bottom Solder Mask.sts" ${board} bStop
-    eagle -X -dGERBER_RS274X -o"${outputdir}/Top Silkscreen.plc" ${board} Dimension tPlace tNames tValues
-    eagle -X -dGERBER_RS274X -o"${outputdir}/Bottom Silkscreen.pls" ${board} Dimension bPlace bNames bValues
+    eagle -X -dGERBER_RS274X -o"${outputdir}/Top Silkscreen.plc" ${board} Dimension tPlace tNames
+    eagle -X -dGERBER_RS274X -o"${outputdir}/Bottom Silkscreen.pls" ${board} Dimension bPlace bNames
     eagle -X -dGERBER_RS274X -o"${outputdir}/Board Outline.ger" ${board} Dimension
 
     # create drill files
