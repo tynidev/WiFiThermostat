@@ -9,7 +9,7 @@
  # The TXT file is used for BSL loading, the ELF can be used for JTAG use
  # 
  TARGET     = wifi
- MCU        = msp430f2132
+ MCU        = msp430g2553
  # List all the source files here
  # eg if you have a source file foo.c then list it here
  SOURCES = main.c utils.c spi.c ST7565R.c lm35.c adc.c wifly.c uart.c

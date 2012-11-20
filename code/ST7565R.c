@@ -45,10 +45,9 @@
 #include "spi.h"
 
 /**
- * A0 (Select registers. 0: instruction,  1: data register) at P3.4
+ * A0 (Select registers. 0: instruction,  1: data register) at P3.1
  */
-#define A0      BIT2
-#define RST BIT3
+#define A0      BIT1
 
 const unsigned char font5x7[] =
 {
@@ -152,7 +151,7 @@ const unsigned char font5x7[] =
 
 void ST7565R_WriteData(unsigned char data) //Data Output Serial Interface
 {
-  P1OUT |= A0; // set A0 high to select data registers
+  P3OUT |= A0; // set A0 high to select data registers
   spi_csl();
   spi_xfer_byte(data);
   spi_csh();
@@ -160,7 +159,7 @@ void ST7565R_WriteData(unsigned char data) //Data Output Serial Interface
 
 void ST7565R_WriteCommand(unsigned char comm) //Command Output Serial Interface
 {
-  P1OUT &= ~A0; // set A0 low to select instruction registers
+  P3OUT &= ~A0; // set A0 low to select instruction registers
   spi_csl();
   spi_xfer_byte(comm);
   spi_csh();
@@ -297,14 +296,10 @@ void ST7565R_Init()
   spi_init();
 
   // set pin directions
-  P1DIR  |= (A0 | RST);
+  P3DIR  |= A0;
 
   // toggle RST low to reset; CS low so it'll listen to us
   spi_csl();
-
-  P1OUT &= ~RST;
-  delay_ms(500);
-  P1OUT |= RST;
 
   // LCD bias select
   ST7565R_LcdBiasOneFifth(0);

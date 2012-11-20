@@ -11,7 +11,8 @@ void uart_init(unsigned long BAUD, void (*isr_ptr)(char c))
 {
   uart_rx_isr_ptr = isr_ptr;
 
-  P3SEL |= RXD + TXD ;                     // P3.5 = RXD, P3.4=TXD
+  P1SEL |= RXD + TXD ;                     // P1.3 = RXD, P1.2=TXD
+  P1SEL2 |= RXD + TXD ;                    // P1.3 = RXD, P1.2=TXD
   UCA0CTL1 |= UCSSEL_2;                     // SMCLK
 
   // Set the baudrate dividers and modulation

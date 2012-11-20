@@ -32,19 +32,19 @@
 #include "spi.h"
 
 /**
- * SPI Clock at P3.3
+ * SPI Clock at P1.5
  */
-#define SCLK    BIT3
+#define SCLK    BIT5
 
 /**
- * SPI SOMI (Slave Out, Master In) at P3.2
+ * SPI SOMI (Slave Out, Master In) at P1.6
  */
-#define SOMI    BIT2
+#define SOMI    BIT6
 
 /**
- * SPI SIMO (Slave In, Master Out) at P3.1
+ * SPI SIMO (Slave In, Master Out) at P1.7
  */
-#define SIMO    BIT1
+#define SIMO    BIT7
 
 /**
  * CS (Chip Select) at P3.0
@@ -68,9 +68,10 @@ void spi_init(void)
   UCB0CTL1 = UCSWRST;
 
   // (2)
-  P3DIR  |= CS | SIMO | SCLK;
+  P3DIR  |= CS;
   P3OUT  |= CS;
-  P3SEL  |= SOMI + SIMO + SCLK;
+  P1SEL  |= SOMI + SIMO + SCLK;
+  P1SEL2 |= SOMI + SIMO + SCLK;
 
   // (3) 3-pin, 8-bit SPI master
   UCB0CTL0 |= UCCKPH + UCMSB + UCMST + UCSYNC;

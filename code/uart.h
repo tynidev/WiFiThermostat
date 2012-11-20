@@ -2,14 +2,14 @@
 #define __UART_H
 
 /**
- * Receive Data (RXD) at P3.5
+ * Receive Data (RXD) at P1.1
  */
-#define RXD		BIT5
+#define RXD		BIT1
 
 /**
- * Transmit Data (TXD) at P3.4
+ * Transmit Data (TXD) at P1.2
  */
-#define TXD		BIT4
+#define TXD		BIT2
 
 /**
  * Initialize soft UART

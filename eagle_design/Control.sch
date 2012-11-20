@@ -5987,6 +5987,7 @@ EC12E series with push-on switch</description>
 <pinref part="U$1" gate="G$1" pin="9"/>
 <wire x1="6.35" y1="17.78" x2="2.54" y2="17.78" width="0.1524" layer="91"/>
 <junction x="2.54" y="17.78"/>
+<label x="-2.54" y="17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="134.62" y1="15.24" x2="139.7" y2="15.24" width="0.1524" layer="91"/>
@@ -6179,6 +6180,7 @@ EC12E series with push-on switch</description>
 <pinref part="U$1" gate="G$1" pin="8"/>
 <wire x1="6.35" y1="20.32" x2="2.54" y2="20.32" width="0.1524" layer="91"/>
 <junction x="2.54" y="20.32"/>
+<label x="-2.54" y="20.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SCL" class="0">
