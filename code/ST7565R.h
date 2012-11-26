@@ -35,6 +35,3 @@ void ST7565R_WriteChar(char ch);
 void ST7565R_WriteInverseChar(char ch);
 void ST7565R_WriteString(char * string);
 void ST7565R_WriteInverseString(char * string);
-
-
-
