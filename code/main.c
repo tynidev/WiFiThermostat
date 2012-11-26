@@ -4,6 +4,7 @@
 
 #include <msp430.h>
 #include <signal.h>
+#include <stdlib.h>
 
 #include "ST7565R.h"
 #include "utils.h"
@@ -21,6 +22,7 @@ int ac = 0;
 int temps[100];
 unsigned int temp_i = 0;
 unsigned char A_last = 1;
+unsigned int off = 0;
 
 int av_temp(int temp)
 {
@@ -101,6 +103,13 @@ void update_screen()
 
 void read_encoder()
 {
+  if( (P2IN & BIT2) == BIT2 )
+  {
+    if(off) off = 0; else off = 1;
+    delay_ms(500);
+    return;
+  }
+
   unsigned char A = ((P3IN & BIT2) >> 2) & 0x01; // enconder pin A is P3.2
   
   if(A == A_last)
@@ -128,19 +137,31 @@ interrupt(TIMER0_A0_VECTOR) TIMERA_ISR(void)
 {
   __asm("dint");
 
-  if(set_temp > cur_temp)
+  if(!off)
   {
-    heat = 1; P2OUT |=  BIT4;
-    ac = 0;   P2OUT &= ~BIT3;
-  }
-  else if (set_temp < cur_temp)
-  {
-    heat = 0; P2OUT &= ~BIT4;
-    ac = 1;   P2OUT |=  BIT3;
+    fan = 1;
+    P3OUT |= BIT4; // turn on fan
+    if(set_temp > cur_temp)
+    {
+      heat = 1; P2OUT |=  BIT4;
+      ac = 0;   P2OUT &= ~BIT3;
+    }
+    else if (set_temp < cur_temp)
+    {
+      heat = 0; P2OUT &= ~BIT4;
+      ac = 1;   P2OUT |=  BIT3;
+    }
+    else
+    {
+      heat = ac = 0; 
+      P2OUT &= ~BIT4;
+      P2OUT &= ~BIT3;
+    }
   }
   else
   {
-    heat = ac = 0; 
+    heat = ac = fan = 0; 
+    P3OUT |= BIT4; // turn off fan
     P2OUT &= ~BIT4;
     P2OUT &= ~BIT3;
   }
@@ -166,22 +187,26 @@ void init()
   P3DIR = 0x13; // P3.2 & P3.3 as input
   P3REN = 0x0C; // enable PULLUP/PULLDOWN
   P3OUT = 0x0C; // select PULLUP
-
-  P3OUT |= BIT4; // turn on fan
-
+  
+  P2SEL = 0x00; // select io function for all ports
   P2DIR = BIT3 | BIT4; // enable output for HEAT and AC
   P2OUT = 0x00;
 
   wifly_init("TylerN", "DZwV4FGb", 9600);
   ST7565R_Init();
   
+  for(unsigned int i = 0; i < 100; i++)
+    temps[i] = lm35_tempF(3.6, 0);
+
+  for(unsigned int i = 0; i < 10; i++)
+    ST7565R_Clear();
+
   __asm("eint");
 }
 
 int main(void)
 {
   init();
-  ST7565R_Clear();
 
   LOOP:
 

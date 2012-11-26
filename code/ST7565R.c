@@ -209,7 +209,7 @@ void ST7565R_Clear()
   for(page=0;page<4;page++)
   {
     ST7565R_PageAddress(page);
-    for(col=0;col<131;col++)
+    for(col=0;col<128;col++)
     {
       ST7565R_ColumnAddress(col);
       ST7565R_WriteData(0);
