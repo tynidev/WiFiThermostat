@@ -1,14 +1,3 @@
-/*
- * Project name:
-      Sitronix ST7565R Dot Matix LCD Controller/Driver Library (SPI)
- * Copyright:
-     (c) Sophtware.com, Inc., 2010.
- * Revision History:
-     20101218:
-       - initial release;
- * Description:
-     See the SITRONIX_ST7565R.c file . . .
-*/
 #define BLACK 1
 #define WHITE 0
 
@@ -40,8 +29,12 @@ void ST7565R_BoosterRatio(unsigned char ratio);
 void ST7565R_Nop();
 void ST7565R_Init();
 void ST7565R_Clear();
+unsigned char ST7565R_32x24_Digit(unsigned char x, unsigned char col);
+unsigned char ST7565R_32x24_Number(unsigned int x, unsigned char col);
 void ST7565R_WriteChar(char ch);
 void ST7565R_WriteInverseChar(char ch);
 void ST7565R_WriteString(char * string);
 void ST7565R_WriteInverseString(char * string);
-void DisplayBox();
+
+
+

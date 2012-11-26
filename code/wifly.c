@@ -10,7 +10,7 @@ void wifly_rx(char c);
 
 void wifly_init(char* ssid, char* password, unsigned long baud)
 {
-  uart_init(9600, wifly_rx);
+  uart_init(baud, wifly_rx);
 }
 
 void wifly_rx(char c) {

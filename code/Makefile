@@ -12,12 +12,12 @@
  MCU        = msp430g2553
  # List all the source files here
  # eg if you have a source file foo.c then list it here
- SOURCES = main.c utils.c spi.c ST7565R.c lm35.c adc.c wifly.c uart.c
+ SOURCES = main.c utils.c spi.c ST7565R.c lm35.c adc.c wifly.c uart.c 5x7font.c 32x24font.c
  # Include are located in the Include directory
  INCLUDES = -IInclude
  # Add or subtract whatever MSPGCC flags you want. There are plenty more
  #######################################################################################
-CFLAGS   = -mmcu=$(MCU) -g -O1 -Wall -Wunused $(INCLUDES) -DRX_BUF_SIZE=64 -DSYS_CLK=1000000L
+CFLAGS   = -mmcu=$(MCU) -std=c99 -O1 -Wall -Wunused $(INCLUDES) -DRX_BUF_SIZE=64 -DSYS_CLK=1000000L
 ASFLAGS  = -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
 LDFLAGS  = -mmcu=$(MCU) -Wl,-Map=$(TARGET).map
 ########################################################################################
