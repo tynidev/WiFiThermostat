@@ -11,7 +11,6 @@
 
 extern unsigned char* numbers[10];
 extern unsigned char font5x7[480];
-
                                      
 void ST7565R_WriteData(unsigned char data) //Data Output Serial Interface
 {
@@ -161,9 +160,6 @@ void ST7565R_Init()
 
   // set pin directions
   P3DIR  |= A0;
-
-  // toggle RST low to reset; CS low so it'll listen to us
-  spi_csl();
 
   // LCD bias select
   ST7565R_LcdBiasOneFifth(0);

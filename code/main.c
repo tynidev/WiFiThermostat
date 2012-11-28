@@ -11,16 +11,27 @@
 #include "lm35.h"
 #include "wifly.h"
 
+// TIMER variables
+volatile unsigned int timer = 0;
+
+// UART variables
+volatile unsigned int msg_received = 0;
 char RX_BUF[RX_BUF_SIZE];
 char MSG[RX_BUF_SIZE];
-volatile int msg_received = 0;
-int cur_temp = 0;
-int set_temp = 72;
+
+// HVAC control variables
 int heat = 0;
 int fan = 1;
 int ac = 0;
+
+// temperature variables
+int cur_temp = 0;
+int set_temp = 72;
 int temps[100];
 unsigned int temp_i = 0;
+int offset = 0;
+
+// encoder variables
 unsigned char A_last = 1;
 unsigned int off = 0;
 
@@ -35,7 +46,7 @@ int av_temp(int temp)
       sum += temps[i];
   sum /= 100;
 
-  return sum;
+  return sum + offset;
 }
 
 void update_screen()
@@ -105,8 +116,10 @@ void read_encoder()
 {
   if( (P2IN & BIT2) == BIT2 )
   {
-    if(off) off = 0; else off = 1;
-    delay_ms(500);
+    __asm("dint");
+    off = ~off;
+    __asm("eint");
+    delay_ms(1000);
     return;
   }
 
@@ -116,11 +129,9 @@ void read_encoder()
     return;
 
   // software debounce
-  //P2OUT |= BIT2;
   for(unsigned int i = 0; i < 500; i++)
     if( (((P3IN & BIT2) >> 2) & 0x01) != A )
       return;
-  //P2OUT &= ~BIT2;
 
   if (!A_last && A) // if low to high transition
   {
@@ -165,11 +176,8 @@ interrupt(TIMER0_A0_VECTOR) TIMERA_ISR(void)
     P2OUT &= ~BIT4;
     P2OUT &= ~BIT3;
   }
-  
-  cur_temp = av_temp(lm35_tempF(3.6, 0));
 
-  update_screen();
-  
+  timer = 1;
   __asm("eint");
 }
 
@@ -190,7 +198,8 @@ void init()
   
   P2SEL = 0x00; // select io function for all ports
   P2DIR = BIT3 | BIT4; // enable output for HEAT and AC
-  P2OUT = 0x00;
+  P2REN = BIT2; // enable PULLUP/PULLDOWN
+  P2OUT = 0x00; // select PULLDOWN
 
   wifly_init("TylerN", "DZwV4FGb", 9600);
   ST7565R_Init();
@@ -198,8 +207,7 @@ void init()
   for(unsigned int i = 0; i < 100; i++)
     temps[i] = lm35_tempF(3.6, 0);
 
-  for(unsigned int i = 0; i < 10; i++)
-    ST7565R_Clear();
+  ST7565R_Clear();
 
   __asm("eint");
 }
@@ -211,10 +219,32 @@ int main(void)
   LOOP:
 
   while(!msg_received)
+  {
+    if(timer) // if timer expired run timer code
+    {
+        cur_temp = av_temp(lm35_tempF(3.6, 0));
+        update_screen();
+        __asm("dint"); timer = 0;  __asm("eint");
+    }
+    
     read_encoder(); // poll encoder
+  }
   
   __asm("dint");
+
   // if a message has been received then change system state  
+  set_temp = MSG[0];
+  unsigned char clear = MSG[1];
+  unsigned char vol = MSG[2];
+  offset = MSG[3];
+
+  ST7565R_DisplayOn(1);
+  ST7565R_DisplayAllPointsOn(0);
+  ST7565R_ElectronicVolumnMode(vol);
+
+  if(clear) // if clear
+    ST7565R_Clear();
+
   msg_received = 0;
   __asm("eint");
 

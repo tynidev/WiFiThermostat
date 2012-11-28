@@ -4,7 +4,7 @@
 
 extern char RX_BUF[];
 extern char MSG[];
-extern int msg_received;
+extern unsigned int msg_received;
 
 void wifly_rx(char c);
 
@@ -19,7 +19,7 @@ void wifly_rx(char c) {
 
   switch(c)
   {
-    case '\n':
+    case -1:
       MSG[i] = 0;
       while(i)
       {
