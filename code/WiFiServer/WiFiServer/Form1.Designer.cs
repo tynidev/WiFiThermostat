@@ -1,5 +1,24 @@
-﻿namespace WiFiServer
+﻿using System.Windows.Forms;
+using System.Windows.Forms.Design;
+namespace WiFiServer
 {
+
+  [ToolStripItemDesignerAvailability(ToolStripItemDesignerAvailability.MenuStrip |
+                                   ToolStripItemDesignerAvailability.ContextMenuStrip)]
+  public class TrackBarMenuItem : ToolStripControlHost
+  {
+    public TrackBar trackBar;
+
+    public TrackBarMenuItem()
+      : base(new TrackBar())
+    {
+      this.trackBar = this.Control as TrackBar;
+      this.trackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+    }
+
+    // Add properties, events etc. you want to expose...
+  }
+
   partial class Form1
   {
     /// <summary>
@@ -28,6 +47,8 @@
     /// </summary>
     private void InitializeComponent()
     {
+      this.components = new System.ComponentModel.Container();
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
       this.tempSlider = new System.Windows.Forms.TrackBar();
       this.contrastSlider = new System.Windows.Forms.TrackBar();
       this.label1 = new System.Windows.Forms.Label();
@@ -38,9 +59,14 @@
       this.offsetLbl = new System.Windows.Forms.Label();
       this.label4 = new System.Windows.Forms.Label();
       this.offsetSlider = new System.Windows.Forms.TrackBar();
+      this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+      this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+      this.trackBarMenuItem1 = new WiFiServer.TrackBarMenuItem();
+      this.clearBtn = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.tempSlider)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.contrastSlider)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.offsetSlider)).BeginInit();
+      this.contextMenuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // tempSlider
@@ -139,11 +165,43 @@
       this.offsetSlider.KeyUp += new System.Windows.Forms.KeyEventHandler(this.offsetSlider_KeyUp);
       this.offsetSlider.MouseUp += new System.Windows.Forms.MouseEventHandler(this.offsetSlider_MouseUp);
       // 
+      // notifyIcon1
+      // 
+      this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+      this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+      this.notifyIcon1.Text = "notifyIcon1";
+      this.notifyIcon1.Visible = true;
+      this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+      // 
+      // contextMenuStrip1
+      // 
+      this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trackBarMenuItem1});
+      this.contextMenuStrip1.Name = "contextMenuStrip1";
+      this.contextMenuStrip1.Size = new System.Drawing.Size(106, 52);
+      // 
+      // trackBarMenuItem1
+      // 
+      this.trackBarMenuItem1.Name = "trackBarMenuItem1";
+      this.trackBarMenuItem1.Size = new System.Drawing.Size(45, 45);
+      this.trackBarMenuItem1.Text = "trackBarMenuItem1";
+      // 
+      // clearBtn
+      // 
+      this.clearBtn.Location = new System.Drawing.Point(12, 277);
+      this.clearBtn.Name = "clearBtn";
+      this.clearBtn.Size = new System.Drawing.Size(151, 23);
+      this.clearBtn.TabIndex = 9;
+      this.clearBtn.Text = "Clear Screen";
+      this.clearBtn.UseVisualStyleBackColor = true;
+      this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(171, 280);
+      this.ClientSize = new System.Drawing.Size(175, 315);
+      this.Controls.Add(this.clearBtn);
       this.Controls.Add(this.offsetLbl);
       this.Controls.Add(this.label4);
       this.Controls.Add(this.offsetSlider);
@@ -156,9 +214,12 @@
       this.Name = "Form1";
       this.Text = "Thermostat Control";
       this.Load += new System.EventHandler(this.Form1_Load);
+      this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
       ((System.ComponentModel.ISupportInitialize)(this.tempSlider)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.contrastSlider)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.offsetSlider)).EndInit();
+      this.contextMenuStrip1.ResumeLayout(false);
+      this.contextMenuStrip1.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -176,6 +237,10 @@
     private System.Windows.Forms.Label offsetLbl;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.TrackBar offsetSlider;
+    private System.Windows.Forms.NotifyIcon notifyIcon1;
+    private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+    private TrackBarMenuItem trackBarMenuItem1;
+    private Button clearBtn;
   }
 }
 

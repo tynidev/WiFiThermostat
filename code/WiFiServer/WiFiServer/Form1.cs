@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace WiFiServer
 {
@@ -17,6 +18,7 @@ namespace WiFiServer
     public int temp = 75;
     public int contrast = 0;
     public int offset = 0;
+    public int clear = 0;
 
     public Form1()
     {
@@ -79,7 +81,7 @@ namespace WiFiServer
       // Translate the passed message into ASCII and store it as a Byte array.
       Byte[] data = new Byte[]{
         Convert.ToByte(temp),
-        Convert.ToByte(0),
+        Convert.ToByte(clear),
         Convert.ToByte(contrast),
         Convert.ToByte(offset & 0xff),
         Convert.ToByte(255)
@@ -108,6 +110,27 @@ namespace WiFiServer
       {
         Console.WriteLine("SocketException: {0}", exc);
       }
+    }
+
+    private void Form1_SizeChanged(object sender, EventArgs e)
+    {
+      if (WindowState == FormWindowState.Minimized)
+      {
+        this.Hide();
+      }
+    }
+
+    private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+    {
+      this.Show();
+      this.WindowState = FormWindowState.Normal;
+    }
+
+    private void clearBtn_Click(object sender, EventArgs e)
+    {
+      clear = 1;
+      sendValues();
+      clear = 0;
     }
   }
 }
